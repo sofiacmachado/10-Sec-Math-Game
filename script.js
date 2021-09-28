@@ -1,5 +1,7 @@
 $(document).ready(function() {
-        
+    let slider = document.getElementById('number-limit');
+    let sliderDisplay = document.getElementById('number-output');
+    sliderDisplay.innerHTML = slider.value;    
     let currentQuestion;
     let timeLeft = 10;
     let interval;
@@ -10,6 +12,11 @@ $(document).ready(function() {
         timeLeft += amount;
         $('#time-left').text(timeLeft);
     }
+
+    slider.oninput = function() {
+        sliderDisplay.innerHTML = this.value;
+    }
+
 
    /* Update Score */
 
@@ -43,8 +50,8 @@ $(document).ready(function() {
 
     const questionGenerator = function () {
         let question = {};
-        let num1 = randomNumberGenerator(10);
-        let num2 = randomNumberGenerator(10);
+        let num1 = randomNumberGenerator(slider.value);
+        let num2 = randomNumberGenerator(slider.value);
         
         question.answer = num1 + num2;
         question.equation = String(num1) + ' + ' + String(num2);
@@ -78,4 +85,5 @@ $(document).ready(function() {
 
     renderNewQuestion();
 
+    console.log('number-limit')
 });
