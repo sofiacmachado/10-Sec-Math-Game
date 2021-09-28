@@ -2,16 +2,16 @@ $(document).ready(function() {
     const slider = document.getElementById('number-limit');
     const sliderDisplay = document.getElementById('number-output');
     sliderDisplay.innerHTML = slider.value;    
-    const addition = document.getElementById('#equation-plus');
-    const subtraction = document.getElementById('#equation-minus');
-    const multiplication = document.getElementById('#equation-times');
-    const division = document.getElementById('#equation-divide');
+    const addition = document.getElementById('equation-plus');
+    const subtraction = document.getElementById('equation-minus');
+    const multiplication = document.getElementById('equation-times');
+    const division = document.getElementById('equation-divide');
     let currentQuestion;
     let timeLeft = 10;
     let interval;
     let score = 0;
     let higherScore = 0;
-    let operator = '+';
+    let operator;
 
     const updateTimeLeft = function (amount) {
         timeLeft += amount;
@@ -64,15 +64,28 @@ $(document).ready(function() {
     }
 
     const getOperator = function() {
-        if (addition.checked) {
-            return operator = '+';
-        } else if (subtraction.checked) {
-            return operator = '-';
-        } else if (multiplication.checked) {
-            return operator = '*';
-        } else if (division.checked) {
-            return operator = '/';
+        let operators = [];
+        if (addition.checked === true) {
+            operators.push('+');
         }
+        if (subtraction.checked === true) {
+            operators.push('-');
+        }
+        if (multiplication.checked === true) {
+            operators.push('*');
+        }
+        if (division.checked === true) {
+            operators.push('/');
+        }
+        if (operators.length === 0) {
+            operator = '+';
+        } else if (operators.length === 1) {
+            operator = operators[0];
+        } else {
+            let i = Math.floor(Math.random() * operators.length);
+            operator = operators[i];
+        }
+        return operator;
     }
 
   /*   $(document).on('click', '.equation-type', function () {
@@ -93,17 +106,24 @@ $(document).ready(function() {
         let question = {};
         let num1 = randomNumberGenerator(slider.value);
         let num2 = randomNumberGenerator(slider.value);
-        
 
-
-        question.answer = num1 + num2;
+        getOperator();
+        if (operator === '+') {
+            question.answer = num1 + num2;
+        } else if (operator === '-') {
+            question.answer = num1 - num2;
+        } else if (operator === '*') {
+            question.answer = num1 * num2;
+        } else if (operator === '/') {
+            question.answer = num1 / num2;
+        }
         question.equation = String(num1) + operator + String(num2);
 
         return question;
-        
     }
 
     const renderNewQuestion = function() { 
+       
         currentQuestion = questionGenerator();
         $('#equation').text(currentQuestion.equation);
     }
@@ -120,12 +140,17 @@ $(document).ready(function() {
         }
     }
     
+    $('.equationType').onclick = function () {
+        getOperator();        
+    };
+
     $('#user-input').on('keyup', function() {
         startGame();
         checkAnswer(Number($(this).val()), currentQuestion.answer);
     });
 
+
     renderNewQuestion();
-    console.log(operator);
+    console.log(addition.checked);
     console.log('number-limit');
 });
