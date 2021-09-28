@@ -1,0 +1,42 @@
+.container {
+    background-image: url(./media/board.jpg);
+    background-size: cover;
+    padding: 30px;
+    font-family: 'Playfair Display';
+    font-weight: 600;
+    color: rgb(51, 51, 51);
+}
+
+#title {
+    font-style: italic;
+    font-size: 38px;
+    text-shadow: 2px 3px 2px rgb(80, 80, 80);
+}
+
+.heading {
+    margin-top: -15px;
+    margin-bottom: -5px;
+    font-size: 30px;
+    font-weight: 400;
+}
+
+.heading-equation {
+    font-size: 28px;
+    font-weight: 500;
+    color: rgb(37, 64, 138);
+}
+#label {
+    margin-top: 10px;
+    margin-bottom: -10px;
+}
+
+#number-output {
+    margin-top: -5px;
+}
+.scores {
+    font-size: 16px;
+    font-weight: 400;
+    display:grid;
+    justify-items: left;
+    margin-left: 30px;
+}

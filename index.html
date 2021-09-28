@@ -27,12 +27,12 @@
     <body>
         <div class='container'>
             <div class='row text-center'>
-                <div class='col-6'>
+                <div class='col-12'>
                     <h1 id='title'>Ten Second Math</h1>
                     <br>
-                    <h2 id='time-left'>10</h1>
+                    <h2 class='heading' id='time-left'>10</h1>
                     <p>seconds left</p>
-                    <h2 id='equation'></h2>
+                    <h2 class='heading-equation' id='equation'></h2>
                     <div class=''>
                             <input class='equation-type' id='equation-plus' type='checkbox' value='true'>
                             <label for='equation-plus'>+</label>
@@ -45,11 +45,11 @@
                     </div>
                     <input id='user-input' type='number' required>
                     <br>
-                    <label for='number-limit'>Number Limit</label>
+                    <label id='label' for='number-limit'>Number Limit</label>
                     <h5 id='number-output'></h5>
                     <input id='number-limit' class='' type='range' min='10' max='50' step='5'>
-                    <h3>Score: <span id='score'></span></h3>
-                    <h3>Higher Score: <span id='higher-score'></span></h3>
+                    <h3 class='scores'>Score: <span id='score'></span></h3>
+                    <h3 class='scores'>Higher Score: <span id='higher-score'></span></h3>
                 </div>
 
             </div>
