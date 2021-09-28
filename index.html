@@ -34,13 +34,13 @@
                     <p>seconds left</p>
                     <h2 id='equation'></h2>
                     <div class=''>
-                            <input id='equation-plus' type='checkbox' value='true'>
+                            <input class='equation-type' id='equation-plus' type='checkbox' value='true'>
                             <label for='equation-plus'>+</label>
-                            <input id='equation-minus' type='checkbox' value='false'>
+                            <input class='equation-type' id='equation-minus' type='checkbox' value='false'>
                             <label for='equation-minus'>-</label>
-                            <input id='equation-times' type='checkbox' value='false'>
+                            <input class='equation-type' id='equation-times' type='checkbox' value='false'>
                             <label for='equation-times'>x</label>
-                            <input id='equation-divide' type='checkbox' value='false'>
+                            <input class='equation-type' id='equation-divide' type='checkbox' value='false'>
                             <label for='equation-divide'>/</label>
                     </div>
                     <input id='user-input' type='number' required>
@@ -49,6 +49,7 @@
                     <h5 id='number-output'></h5>
                     <input id='number-limit' class='' type='range' min='10' max='50' step='5'>
                     <h3>Score: <span id='score'></span></h3>
+                    <h3>Higher Score: <span id='higher-score'></span></h3>
                 </div>
 
             </div>
