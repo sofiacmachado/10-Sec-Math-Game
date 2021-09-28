@@ -1,10 +1,45 @@
 $(document).ready(function() {
         
     let currentQuestion;
+    let timeLeft = 10;
+    let interval;
+    let score = 0;
+ 
+
+    const updateTimeLeft = function (amount) {
+        timeLeft += amount;
+        $('#time-left').text(timeLeft);
+    }
+
+   /* Update Score */
+
+    const updateScore = function (amount) {
+        score += amount;
+        $('#score').text(score);
+    }
+
+    /* Set Timer to Start Game */
+    const startGame = function () {
+        if(!interval) {
+            if (timeLeft === 0) {
+                updateTimeLeft(10);
+                updateScore(-score);
+            }
+            interval = setInterval(function () {
+                updateTimeLeft(-1);
+                if(timeLeft === 0) {
+                    clearInterval(interval);
+                    interval = undefined;
+                }
+            }, 1000);
+        }
+    }
+
+ 
 
     const randomNumberGenerator = function(size) {
-        return Math.ceil(Math.random() * size);
-    }
+            return Math.ceil(Math.random() * size);
+        }
 
     const questionGenerator = function () {
         let question = {};
@@ -29,13 +64,18 @@ $(document).ready(function() {
             renderNewQuestion();
             //reset input
             $('#user-input').val('');
+            updateTimeLeft(+1);
+            updateScore(+1);
         }
     }
 
+
+    
     $('#user-input').on('keyup', function() {
+        startGame();
         checkAnswer(Number($(this).val()), currentQuestion.answer);
     });
 
     renderNewQuestion();
-    
+
 });
