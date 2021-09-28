@@ -25,15 +25,24 @@
         <title>Ten Second Math Game</title>
     </head>
     <body>
-        <header>
-            <h1 id='title'>Ten Second Math</h1>
-        </header>
         <div class='container'>
-            <div class='row'>
+            <div class='row text-center'>
                 <div class='col-6'>
-                    <h1 id='time-left'>10</h1>
+                    <h1 id='title'>Ten Second Math</h1>
+                    <br>
+                    <h2 id='time-left'>10</h1>
                     <p>seconds left</p>
                     <h2 id='equation'></h2>
+                    <div class=''>
+                            <input id='equation-plus' type='checkbox' value='true'>
+                            <label for='equation-plus'>+</label>
+                            <input id='equation-minus' type='checkbox' value='false'>
+                            <label for='equation-minus'>-</label>
+                            <input id='equation-times' type='checkbox' value='false'>
+                            <label for='equation-times'>x</label>
+                            <input id='equation-divide' type='checkbox' value='false'>
+                            <label for='equation-divide'>/</label>
+                    </div>
                     <input id='user-input' type='number' required>
                     <br>
                     <label for='number-limit'>Number Limit</label>
