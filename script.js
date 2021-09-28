@@ -17,6 +17,25 @@ $(document).ready(function() {
         return question;
     }
 
-    currentQuestion = questionGenerator();
-    $('#equation').text(currentQuestion.equation);
+    const renderNewQuestion = function() { 
+        currentQuestion = questionGenerator();
+        $('#equation').text(currentQuestion.equation);
+    }
+    
+    /* Compare user input and equation result */
+    
+    const checkAnswer = function(userInput, answer) {
+        if (userInput === answer) {
+            renderNewQuestion();
+            //reset input
+            $('#user-input').val('');
+        }
+    }
+
+    $('#user-input').on('keyup', function() {
+        checkAnswer(Number($(this).val()), currentQuestion.answer);
+    });
+
+    renderNewQuestion();
+    
 });
