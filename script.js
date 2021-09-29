@@ -107,6 +107,18 @@ $(document).ready(function() {
         let num1 = randomNumberGenerator(slider.value);
         let num2 = randomNumberGenerator(slider.value);
 
+        let smallestNumber;
+
+        while(num1 === num2) {
+            num1 = randomNumberGenerator(slider.value);
+        }
+
+        if (num1 < num2) {
+            smallestNumber = num1;
+            num1 = num2;
+            num2 =smallestNumber;
+        }
+
         getOperator();
         if (operator === '+') {
             question.answer = num1 + num2;
@@ -115,7 +127,7 @@ $(document).ready(function() {
         } else if (operator === '*') {
             question.answer = num1 * num2;
         } else if (operator === '/') {
-            question.answer = num1 / num2;
+            question.answer = Math.floor(num1 / num2);
         }
         question.equation = String(num1) + operator + String(num2);
 
