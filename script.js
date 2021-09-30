@@ -106,20 +106,40 @@ $(document).ready(function() {
         let question = {};
         let num1 = randomNumberGenerator(slider.value);
         let num2 = randomNumberGenerator(slider.value);
+        let num3 = num1 * num2;
+
+        let smallestNumber;
+
+        while(num1 === num2) {
+            num1 = randomNumberGenerator(slider.value);
+        }
+
+        if (num1 < num2) {
+            smallestNumber = num1;
+            num1 = num2;
+            num2 =smallestNumber;
+        }
 
         getOperator();
         if (operator === '+') {
             question.answer = num1 + num2;
+            question.equation = String(num1) + operator + String(num2);
         } else if (operator === '-') {
             question.answer = num1 - num2;
+            question.equation = String(num1) + operator + String(num2);
         } else if (operator === '*') {
             question.answer = num1 * num2;
+            question.equation = String(num1) + operator + String(num2);
         } else if (operator === '/') {
-            question.answer = num1 / num2;
+            question.answer = num3 / num1;
+            question.equation = String(num3) + operator + String(num1);
         }
-        question.equation = String(num1) + operator + String(num2);
-
+        
+        console.log(num1);
+        console.log(num2);
+        console.log(num3);
         return question;
+        
     }
 
     const renderNewQuestion = function() { 
@@ -151,6 +171,5 @@ $(document).ready(function() {
 
 
     renderNewQuestion();
-    console.log(addition.checked);
-    console.log('number-limit');
+    
 });
