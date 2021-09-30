@@ -106,8 +106,7 @@ $(document).ready(function() {
         let question = {};
         let num1 = randomNumberGenerator(slider.value);
         let num2 = randomNumberGenerator(slider.value);
-        let num3 = num1 * num2;
-
+        
         let smallestNumber;
 
         while(num1 === num2) {
@@ -119,6 +118,8 @@ $(document).ready(function() {
             num1 = num2;
             num2 =smallestNumber;
         }
+
+        let num3 = num1 * num2;
 
         getOperator();
         if (operator === '+') {
